@@ -99,35 +99,4 @@ const mentorSchema = mongoose.Schema(
  const mentor =conn.model('mentors',mentorSchema);
  const codekata =conn.model('codekatas',codekataSchema);
  const attendance =conn.model('attendances',attendanceSchema);
- const classes =conn.model('classes',classSchema);
- 
-
- const lessens_on_october = user.find({date:{
-    $gte: ISODate("2022-10-01"),
-    $lt: ISODate("2022-11-01")
-  }},(err, docs) => {
-    if (err) {
-      console.error(err);
-    } else {
-      console.log(docs);
-    }
-  });
-
-  const codekata_count = codekata.aggregate([
-    { $group: { _id: "$userid", count: { $sum: 1 } } },
-  ]).exec((err, results) => {
-    if (err) {
-      console.error(err);
-    } else {
-        console.log(results);
-    }})
-
-    const mentee_count = userSchema.aggregate([
-        { $group: { _id: "$mentorid", count: { $sum: 1 } } },
-        { $match: { count: { $gt: 15 } } }
-      ]).exec((err, results) => {
-        if (err) {
-          console.error(err);
-        } else {
-            console.log(results);
-        }})
+ const
